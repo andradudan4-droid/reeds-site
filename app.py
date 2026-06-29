@@ -628,6 +628,14 @@ FOOTER = """
   <div style="color:#fff;font-weight:800;letter-spacing:.14em">R.REEDS PLASTERING &amp; DECORATING</div>
   <div style="margin-top:6px">Chichester, PO19 &middot; covering Bognor Regis, Emsworth, Selsey, Arundel &amp; West Sussex</div>
   <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy Policy</a></div>
+  <div style="margin-top:18px;display:flex;gap:12px;justify-content:center">
+    <a href="https://www.facebook.com/profile.php?id=100044246966322" target="_blank" rel="noopener" aria-label="R. Reeds on Facebook" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03)">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#e879f9"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@r.reedsdecorplasterers1" target="_blank" rel="noopener" aria-label="R. Reeds on TikTok" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03)">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="#e879f9"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.3v12.3a2.4 2.4 0 1 1-2.4-2.4c.2 0 .5 0 .7.1V9.6a5.7 5.7 0 0 0-.7 0 5.7 5.7 0 1 0 5.7 5.7V9.2a7.5 7.5 0 0 0 4.4 1.4V7.3a4.3 4.3 0 0 1-3.4-1.5z"/></svg>
+    </a>
+  </div>
 </footer>
 <a class="wa-float" href="https://wa.me/447880256562" target="_blank" rel="noopener" aria-label="WhatsApp R. Reeds">""" + WA_SVG + """</a>
 <div class="lb" id="lb" onclick="this.classList.remove('open')"><span class="x">&times;</span><img id="lbimg" src="" alt=""></div>
