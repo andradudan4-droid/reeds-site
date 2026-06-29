@@ -578,6 +578,15 @@ BASE_STYLE = """
   .lb.open{display:flex}.lb img{max-width:92vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
   .lb .x{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:300;cursor:pointer;line-height:1}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
+  .cov{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:stretch}
+  .cov-map{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.45);background:#0b0a12}
+  #covmap{height:100%;min-height:400px;width:100%;background:#0b0a12}
+  .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#15101f;color:#fff}.leaflet-container{font-family:Manrope,sans-serif}
+  .cov-list{display:flex;flex-direction:column;justify-content:center}
+  .cov-pill{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-weight:800;font-size:13px;color:#fff;background:linear-gradient(135deg,var(--violet),var(--pink));padding:9px 15px;border-radius:999px;margin-bottom:18px}
+  .areas{gap:8px}.areas .chip{background:rgba(255,255,255,.03);border:1px solid var(--line);color:#e7e0f7}
+  .cov-note{margin-top:18px;color:var(--mut);font-size:14px}
+  @media(max-width:860px){.cov{grid-template-columns:1fr}#covmap{min-height:300px}}
   @media(max-width:860px){
     .hero{padding:38px 18px 30px}
     .hero-inner{grid-template-columns:1fr;gap:26px}
@@ -646,6 +655,16 @@ document.querySelectorAll('.ba').forEach(function(ba){
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
   els.forEach(function(e){io.observe(e)});
+})();
+(function(){
+  if(!window.L) return;
+  var el=document.getElementById('covmap'); if(!el) return;
+  var center=[50.8365,-0.7792];
+  var map=L.map(el,{scrollWheelZoom:false,zoomControl:true}).setView(center,9);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap, &copy; CARTO'}).addTo(map);
+  L.circle(center,{radius:32187,color:'#a855f7',weight:2,fillColor:'#a855f7',fillOpacity:.14}).addTo(map);
+  L.circleMarker(center,{radius:7,color:'#fff',weight:2,fillColor:'#e879f9',fillOpacity:1}).addTo(map).bindPopup('R. Reeds &middot; Chichester PO19');
+  setTimeout(function(){map.invalidateSize();},250);
 })();
 </script>
 """
@@ -719,6 +738,24 @@ HOME_PAGE = """
       ("green-1.jpg","Decorated room"),("kitchen-skim.jpg","Kitchen re-plaster"),
   ]) + """</div>
   <p style="margin-top:22px"><a href="/gallery">Open the full gallery &rarr;</a></p>
+</div></section>
+
+<section class="band" id="areas"><div class="wrap">
+  <div class="head reveal"><div class="eyebrow">Where we work</div><div class="rule"></div><h2>Covering 20 miles around Chichester.</h2><p class="sub">Based in Chichester (PO19) and working right across West Sussex and into east Hampshire. If you're inside the circle, we'll come to you.</p></div>
+  <div class="cov">
+    <div class="cov-map">
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <div id="covmap"></div>
+    </div>
+    <div class="cov-list">
+      <div class="cov-pill">&#128205; 20-mile radius of PO19 7HX</div>
+      <div class="chips areas">
+        <span class="chip">Chichester</span><span class="chip">Bognor Regis</span><span class="chip">Littlehampton</span><span class="chip">Arundel</span><span class="chip">Emsworth</span><span class="chip">Havant</span><span class="chip">Waterlooville</span><span class="chip">Petersfield</span><span class="chip">Midhurst</span><span class="chip">Petworth</span><span class="chip">Pulborough</span><span class="chip">Storrington</span><span class="chip">Selsey</span><span class="chip">West Wittering</span><span class="chip">East Wittering</span><span class="chip">Bosham</span><span class="chip">Southbourne</span><span class="chip">Westbourne</span><span class="chip">Pagham</span><span class="chip">Rustington</span><span class="chip">Angmering</span><span class="chip">Tangmere</span><span class="chip">Lavant</span><span class="chip">Funtington</span>
+      </div>
+      <p class="cov-note">Not sure if we cover you? Just ask in the chat &mdash; we'll let you know straight away.</p>
+    </div>
+  </div>
 </div></section>
 
 <section class="band paper" id="reviews"><div class="wrap">
