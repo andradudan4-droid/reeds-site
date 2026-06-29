@@ -723,9 +723,8 @@ HOME_PAGE = """
 
 <section class="band paper" id="reviews"><div class="wrap">
   <div class="head reveal"><div class="eyebrow">Reviews</div><div class="rule"></div><h2>Rated 9.9/10 on Checkatrade.</h2><p class="sub">From 244 verified reviews across Chichester, Bognor Regis and the surrounding area.</p></div>
-  <div class="review-summary reveal">
-    <div class="score-box"><b>9.9</b><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span>Checkatrade average from 244 reviews</span></div>
-    <div class="review-note"><div class="eyebrow">Why it matters</div><p>Short, specific reviews give new customers the confidence to send photos and ask for a quote &mdash; which is exactly what the assistant on this site is built to capture.</p></div>
+  <div class="reveal" style="margin-bottom:20px">
+    <div class="score-box" style="flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap"><b style="margin:0">9.9</b><div><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span>Checkatrade average from 244 verified reviews</span></div></div>
   </div>
   <div class="reviews-grid">
     <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skimming a wall</h3><p>Rob is very polite and a tidy worker. Very pleased with the result.</p><div class="review-meta">Chichester</div></article>
