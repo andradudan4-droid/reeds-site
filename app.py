@@ -474,6 +474,7 @@ final wrap-up message, on its own line.
 
 
 
+
 BASE_STYLE = """
 <link rel="icon" type="image/jpeg" href="/static/images/logo.jpg">
 <meta name="theme-color" content="#050506">
@@ -487,30 +488,26 @@ BASE_STYLE = """
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#f7f4ff; --mut:#bdb4d6; --soft:#eee8ff; --line:rgba(168,92,255,.22);
+    --ink:#f7f4ff; --mut:#bdb4d6; --line:rgba(168,92,255,.22);
     --purple:#a855f7; --pink:#e879f9; --violet:#6d28d9; --bg:#050506; --panel:#0e0d13;
     --paper:#f5f2ee; --paper-ink:#18161c;
   }
   *{box-sizing:border-box} html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:var(--pink)} img,video{max-width:100%;display:block}
-  .serif{font-family:'Playfair Display',Georgia,serif}
   .wrap{max-width:1180px;margin:0 auto;width:100%}.narrow{max-width:820px}
-  /* nav */
   nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 24px;background:rgba(5,5,6,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.16em;font-size:15px}
   .brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;border:1px solid var(--line)}
   .links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}.links a{color:#ece7ff;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.02em}.links a:hover{color:var(--pink)}
   .navcta{background:linear-gradient(135deg,var(--violet),var(--pink));padding:10px 16px;border-radius:999px;color:#fff!important;box-shadow:0 8px 24px rgba(168,85,247,.3)}
-  /* hero */
-  .hero{position:relative;overflow:hidden;padding:78px 24px 64px;background:
+  .hero{position:relative;overflow:hidden;padding:70px 24px 58px;background:
      radial-gradient(900px 520px at 78% 8%,rgba(124,58,237,.34),transparent 60%),
-     radial-gradient(760px 520px at 8% 96%,rgba(232,121,249,.16),transparent 55%),
-     #050506}
+     radial-gradient(760px 520px at 8% 96%,rgba(232,121,249,.16),transparent 55%),#050506}
   .hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(168,85,247,.10) 1px,transparent 1px);background-size:26px 26px;opacity:.5;mask:linear-gradient(#000,transparent 75%)}
-  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:46px;align-items:center}
+  .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:46px;align-items:center}
   .eyebrow{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--pink);font-weight:800}
-  h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,6.4vw,74px);line-height:1.0;margin:18px 0 18px;letter-spacing:-.5px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(38px,6vw,70px);line-height:1.0;margin:18px 0 18px;letter-spacing:-.5px}
   h1 .g{background:linear-gradient(120deg,var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero p{font-size:18px;color:#e3daf6;max-width:560px;margin:0 0 26px}
   .btns{display:flex;gap:12px;flex-wrap:wrap}
@@ -518,7 +515,6 @@ BASE_STYLE = """
   .btn svg{width:18px;height:18px;fill:currentColor}
   .btn.ghost{background:rgba(255,255,255,.05);border:1px solid var(--line);box-shadow:none;color:#fff}
   .btn.wa{background:linear-gradient(135deg,#1faa53,#25d366)}
-  /* hero card */
   .hcard{position:relative}
   .hcard .frame{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5);background:#000}
   .hcard .frame img{width:100%;aspect-ratio:4/5;object-fit:cover}
@@ -526,23 +522,23 @@ BASE_STYLE = """
   .hbadge b{font-size:24px;color:#fff;line-height:1;font-family:'Playfair Display',serif}
   .hbadge span{display:block;font-size:11px;color:var(--mut);letter-spacing:.04em}
   .hbadge .st{color:#ffce47;font-size:13px;letter-spacing:1px}
-  /* trust strip */
-  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
-  .trust .row{display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;align-items:center;padding:18px 24px;max-width:1180px;margin:0 auto}
-  .trust .item{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:700;color:#e7e0f7}
-  .trust .item b{color:#fff}.trust .star{color:#ffce47}
-  /* bands */
-  .band{padding:78px 24px}.paper{background:var(--paper);color:var(--paper-ink)}
+  /* animated marquee */
+  .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .marquee .track{display:inline-flex;white-space:nowrap;animation:mq 32s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  .marquee .grp{display:inline-flex;align-items:center;padding:13px 0;font-weight:700;font-size:13.5px;color:#ece6fb;letter-spacing:.02em}
+  .marquee .grp i{margin:0 24px;color:var(--purple);font-style:normal}
+  .marquee .star{color:#ffce47;margin-right:6px}
+  @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .band{padding:74px 24px}.paper{background:var(--paper);color:var(--paper-ink)}
   .head{margin-bottom:34px}.head h2{font-family:'Playfair Display',Georgia,serif;font-size:clamp(30px,4.6vw,50px);line-height:1.04;margin:10px 0}.sub{color:#c8bfdc;max-width:700px;font-size:16px}.paper .sub{color:#5f5769}.rule{width:52px;height:3px;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:999px}
-  /* services */
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;transition:transform .25s,border-color .25s}
   .card:hover{transform:translateY(-4px);border-color:rgba(232,121,249,.4)}
   .card h3{margin:12px 0 8px;font-size:18px;color:#fff}.card p{margin:0;color:var(--mut);font-size:14px}.num{color:var(--pink);font-weight:900;font-size:12px;letter-spacing:.18em}
-  /* before/after */
-  .stories{display:grid;gap:30px}
-  .story{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:30px;align-items:center}
-  .story:nth-child(even){grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr)}.story:nth-child(even) .story-copy{order:-1}
+  .stories{display:grid;gap:26px}
+  .story{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);gap:30px;align-items:center}
+  .story:nth-child(even){grid-template-columns:minmax(260px,.9fr) minmax(0,1.1fr)}.story:nth-child(even) .story-copy{order:-1}
   .ba{position:relative;--pos:50%;border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.12);box-shadow:0 18px 50px rgba(0,0,0,.16);background:#000}
   .ba .spacer img{width:100%;aspect-ratio:4/3;object-fit:cover;opacity:0}
   .ba .layer{position:absolute;inset:0}.ba .layer img{width:100%;height:100%;object-fit:cover}
@@ -553,17 +549,14 @@ BASE_STYLE = """
   .tag{position:absolute;top:14px;z-index:4;background:rgba(0,0,0,.72);color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 12px;font-size:11px;font-weight:800;letter-spacing:.12em}.tag.b{left:14px}.tag.a{right:14px}
   .story-copy h3{font-size:26px;margin:0 0 9px}.paper .story-copy h3{color:#1c1622}.story-copy p{color:#5a5264;margin:0}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.chip{font-size:12px;font-weight:800;border:1px solid rgba(109,40,217,.22);border-radius:999px;padding:7px 12px;color:#52278f;background:#fff}
-  /* gallery */
   .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
   .shot{margin:0;border-radius:14px;overflow:hidden;background:#000;position:relative;border:1px solid var(--line);cursor:zoom-in}
   .shot img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .5s}
   .shot:hover img{transform:scale(1.06)}
   .shot figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.84));padding:30px 12px 11px;font-size:12px;color:#fff;font-weight:700}
-  /* reels */
   .reels{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
   .reel{background:#000;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.16)}
   .reel video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
-  /* reviews */
   .review-summary{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:stretch;margin-bottom:20px}
   .score-box{border:1px solid rgba(109,40,217,.16);background:#fff;border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:center}
   .score-box b{display:block;font-size:48px;line-height:1;color:#2b113d;font-family:'Playfair Display',serif}.score-box .st{color:#ffb400;font-size:18px;letter-spacing:2px;margin:6px 0}.score-box span{display:block;color:#675c72;font-weight:700}
@@ -571,29 +564,29 @@ BASE_STYLE = """
   .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
   .review-card{background:#fff;border:1px solid rgba(109,40,217,.12);border-radius:16px;padding:21px;box-shadow:0 12px 32px rgba(32,14,54,.05)}
   .stars{color:#ffb400;font-weight:900;letter-spacing:.08em;font-size:14px}.review-card h3{margin:9px 0 8px;font-size:16px;line-height:1.3;color:#21162b}.review-card p{margin:0;color:#554d5e;font-size:14px}.review-meta{margin-top:14px;color:#7a7184;font-size:12px;font-weight:800}
-  /* contact + cta */
   .contact-box{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px}.contact-box p{margin:10px 0}
+  .prose{color:#ccc3e0;max-width:760px}.prose h3{color:#fff;font-size:18px;margin:26px 0 8px}.prose p{margin:0 0 12px;font-size:15px;line-height:1.7}.prose a{color:var(--pink)}
   .ctaband{background:linear-gradient(135deg,#1a1126,#0c0913);border:1px solid var(--line);border-radius:24px;padding:42px;text-align:center}
   .ctaband h2{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);margin:0 0 10px;color:#fff}.ctaband p{color:var(--mut);margin:0 0 22px}
-  /* badges */
   .badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}
   .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:#cdc2e6;border:1px solid var(--line);border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.02)}
   .badge .star{color:#ffce47}
-  /* footer + wa */
   footer{padding:46px 24px 30px;text-align:center;color:var(--mut);border-top:1px solid var(--line);background:#070708}footer img{width:84px;margin:0 auto 14px;border-radius:12px}
   .wa-float{position:fixed;left:20px;bottom:22px;z-index:999998;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 34px rgba(0,0,0,.4);transition:transform .2s}
   .wa-float:hover{transform:scale(1.07)}.wa-float svg{width:32px;height:32px;fill:#fff}
-  /* lightbox */
   .lb{position:fixed;inset:0;z-index:1000000;background:rgba(4,3,8,.93);display:none;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
   .lb.open{display:flex}.lb img{max-width:92vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
   .lb .x{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:300;cursor:pointer;line-height:1}
-  /* reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}
   @media(max-width:860px){
-    .hero-inner{grid-template-columns:1fr;gap:30px}.hcard{max-width:380px}.hbadge{left:auto;right:16px}
+    .hero{padding:38px 18px 30px}
+    .hero-inner{grid-template-columns:1fr;gap:26px}
+    .hcard{max-width:320px;margin:0 auto;width:100%}
+    .hcard .frame img{aspect-ratio:16/11}
+    .hbadge{left:auto;right:10px;bottom:10px;padding:9px 12px}.hbadge b{font-size:19px}
     .story,.story:nth-child(even){grid-template-columns:1fr}.story:nth-child(even) .story-copy{order:0}
     .review-summary{grid-template-columns:1fr}.links a:not(.navcta){display:none}
-    .band{padding:56px 18px}.hero{padding:54px 18px 44px}.gallery{grid-template-columns:1fr 1fr}
+    .band{padding:50px 18px}.gallery{grid-template-columns:1fr 1fr}
   }
 </style>
 """
@@ -602,11 +595,8 @@ NAV = """
 <nav>
   <a class="brand" href="/"><img src="/static/images/logo.jpg" alt="R. Reeds logo"><span>R.REEDS</span></a>
   <div class="links">
-    <a href="/#work">Work</a>
-    <a href="/#services">Services</a>
-    <a href="/#reviews">Reviews</a>
-    <a href="/gallery">Gallery</a>
-    <a href="/contact">Contact</a>
+    <a href="/#work">Work</a><a href="/#services">Services</a><a href="/#reviews">Reviews</a>
+    <a href="/gallery">Gallery</a><a href="/contact">Contact</a>
     <a class="navcta" href="tel:+447880256562">Free quote</a>
   </div>
 </nav>
@@ -614,18 +604,21 @@ NAV = """
 
 WA_SVG = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5a12.7 12.7 0 0 1-2-6.8C3.2 8.8 8.9 3.2 16 3.2c7 0 12.7 5.7 12.7 12.7S23 28.7 16 28.7zm7-9.5c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2-.2.4-.9 1.3-1.1 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.8-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg>'
 
+MARQUEE_GRP = ('<span class="grp"><span class="star">&#9733;</span> 9.9/10 on Checkatrade <i>&bull;</i> 244 verified reviews <i>&bull;</i> 20+ years of experience <i>&bull;</i> Which? Trusted Trader <i>&bull;</i> TrustATrader approved <i>&bull;</i> Free written quotes <i>&bull;</i> Plastering <i>&bull;</i> Painting <i>&bull;</i> Decorating <i>&bull;</i> Chichester &amp; West Sussex <i>&bull;</i></span>')
+MARQUEE = '<div class="marquee"><div class="track">' + MARQUEE_GRP + MARQUEE_GRP + '</div></div>'
+
 FOOTER = """
 <section class="band"><div class="wrap"><div class="ctaband reveal">
   <h2>Got a job in mind?</h2>
   <p>Send a few photos through the chat and get a free, no-obligation estimate.</p>
-  <div class="btns" style="justify-content:center"><a class="btn" href="tel:+447880256562">Call 07880 256562</a><a class="btn wa" href="https://wa.me/447880256562" target="_blank" rel="noopener">""" + WA_SVG.replace('width:32px','') + """ WhatsApp</a></div>
+  <div class="btns" style="justify-content:center"><a class="btn" href="tel:+447880256562">Call 07880 256562</a><a class="btn wa" href="https://wa.me/447880256562" target="_blank" rel="noopener">WhatsApp</a></div>
   <div class="badges"><span class="badge"><span class="star">&#9733;</span> 9.9/10 Checkatrade</span><span class="badge">244 reviews</span><span class="badge">Which? Trusted Trader</span><span class="badge">TrustATrader approved</span><span class="badge">20+ years</span></div>
 </div></div></section>
 <footer>
   <img src="/static/images/logo.jpg" alt="R. Reeds logo">
   <div style="color:#fff;font-weight:800;letter-spacing:.14em">R.REEDS PLASTERING &amp; DECORATING</div>
   <div style="margin-top:6px">Chichester, PO19 &middot; covering Bognor Regis, Emsworth, Selsey, Arundel &amp; West Sussex</div>
-  <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy</a></div>
+  <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy Policy</a></div>
 </footer>
 <a class="wa-float" href="https://wa.me/447880256562" target="_blank" rel="noopener" aria-label="WhatsApp R. Reeds">""" + WA_SVG + """</a>
 <div class="lb" id="lb" onclick="this.classList.remove('open')"><span class="x">&times;</span><img id="lbimg" src="" alt=""></div>
@@ -643,6 +636,7 @@ document.querySelectorAll('.ba').forEach(function(ba){
 });
 (function(){
   var lb=document.getElementById('lb'), img=document.getElementById('lbimg');
+  if(!lb) return;
   document.querySelectorAll('.shot img').forEach(function(im){
     im.addEventListener('click',function(){ img.src=im.src; lb.classList.add('open'); });
   });
@@ -664,105 +658,84 @@ def _ba(before, after, title):
             '<input type="range" min="0" max="100" value="50" aria-label="Compare before and after"></div>')
 
 def _shots(items):
-    out = []
-    for fn, cap in items:
-        out.append('<figure class="shot"><img src="/static/images/' + fn + '" alt="' + cap + '" loading="lazy"><figcaption>' + cap + '</figcaption></figure>')
-    return "".join(out)
+    return "".join('<figure class="shot"><img src="/static/images/' + fn + '" alt="' + cap + '" loading="lazy"><figcaption>' + cap + '</figcaption></figure>' for fn, cap in items)
 
 HOME_PAGE = """
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>R. Reeds Plastering &amp; Decorating - Chichester</title>
 <meta name="description" content="Professional plastering, painting and decorating in Chichester and West Sussex. Free quotes, photo uploads and quick replies.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 """ + BASE_STYLE + """</head><body>""" + NAV + """
-<header class="hero">
-  <div class="wrap hero-inner">
-    <div>
-      <div class="eyebrow">Chichester &middot; West Sussex</div>
-      <h1>Sharp plastering.<br><span class="g">Flawless</span> decorating.</h1>
-      <p>R. Reeds takes on plastering, skimming, painting and decorating for homes and commercial spaces &mdash; clean prep, neat lines, a proper finish every time.</p>
-      <div class="btns">
-        <a class="btn" href="tel:+447880256562"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg> Call 07880 256562</a>
-        <a class="btn wa" href="https://wa.me/447880256562" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-    <aside class="hcard reveal">
-      <div class="frame"><img src="/static/images/room-after.jpg" alt="Freshly decorated room by R. Reeds"></div>
-      <div class="hbadge"><div><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>9.9</b></div><div><span style="color:#fff;font-weight:800">Checkatrade</span><span>244 reviews</span></div></div>
-    </aside>
-  </div>
-</header>
-
-<div class="trust"><div class="row">
-  <div class="item"><span class="star">&#9733;</span> <b>9.9/10</b> Checkatrade</div>
-  <div class="item"><b>244</b> verified reviews</div>
-  <div class="item"><b>Which?</b> Trusted Trader</div>
-  <div class="item"><b>20+</b> years' experience</div>
-  <div class="item"><b>Free</b> written quotes</div>
-</div></div>
-
-<section class="band paper" id="work">
-  <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">Real jobs</div><div class="rule"></div><h2>Before &amp; after, dragged to reveal.</h2><p class="sub">Slide across each photo to see the difference &mdash; all real R. Reeds jobs across Chichester and West Sussex.</p></div>
-    <div class="stories">
-      <article class="story reveal">""" + _ba("r.jpg","r7.jpg","Chimney breast plastering") + """<div class="story-copy"><h3>Chimney breast re-plaster</h3><p>Old boarding stripped back, beaded and skimmed to a flat, ready-to-decorate finish.</p><div class="chips"><span class="chip">Plastering</span><span class="chip">Skimming</span><span class="chip">Fireplace</span></div></div></article>
-      <article class="story reveal">""" + _ba("room-before.jpg","room-after.jpg","Period room repaint") + """<div class="story-copy"><h3>Period room transformed</h3><p>Freshly plastered walls and ceiling taken through to a crisp green finish with bright white woodwork.</p><div class="chips"><span class="chip">Plaster</span><span class="chip">Painting</span><span class="chip">Woodwork</span></div></div></article>
-      <article class="story reveal">""" + _ba("t.jpg","t1.jpg","Commercial office repaint") + """<div class="story-copy"><h3>Commercial office repaint</h3><p>Patch repairs, tidy cutting-in and a calm sage finish across a working office &mdash; out of hours, no disruption.</p><div class="chips"><span class="chip">Commercial</span><span class="chip">Decorating</span><span class="chip">Clean finish</span></div></div></article>
+<header class="hero"><div class="wrap hero-inner">
+  <div>
+    <div class="eyebrow">Chichester &middot; West Sussex</div>
+    <h1>Sharp plastering.<br><span class="g">Flawless</span> decorating.</h1>
+    <p>R. Reeds takes on plastering, skimming, painting and decorating for homes and commercial spaces &mdash; clean prep, neat lines, a proper finish every time.</p>
+    <div class="btns">
+      <a class="btn" href="tel:+447880256562"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg> Call 07880 256562</a>
+      <a class="btn wa" href="https://wa.me/447880256562" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </div>
-</section>
-
-<section class="band" id="services">
-  <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">Services</div><div class="rule"></div><h2>The whole job, start to finish.</h2><p class="sub">From repairing damaged walls to the final coat of colour &mdash; and you can send photos straight from the chat while Rob's on site.</p></div>
-    <div class="cards">
-      <div class="card reveal"><div class="num">01</div><h3>Plastering &amp; skimming</h3><p>Walls, ceilings, chimney breasts, re-skims over artex and patch repairs.</p></div>
-      <div class="card reveal"><div class="num">02</div><h3>Painting &amp; decorating</h3><p>Rooms, feature walls, ceilings, doors, frames and skirting &mdash; neat lines guaranteed.</p></div>
-      <div class="card reveal"><div class="num">03</div><h3>Exterior &amp; woodwork</h3><p>Masonry, timber, doors and outdoor refreshes that hold up to the weather.</p></div>
-      <div class="card reveal"><div class="num">04</div><h3>Commercial work</h3><p>Offices and business spaces, worked tidily and around your opening hours.</p></div>
-    </div>
+  <aside class="hcard reveal">
+    <div class="frame"><img src="/static/images/house-2.jpg" alt="White rendered house with purple door, decorated by R. Reeds"></div>
+    <div class="hbadge"><div><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>9.9</b></div><div><span style="color:#fff;font-weight:800">Checkatrade</span><span>244 reviews</span></div></div>
+  </aside>
+</div></header>
+""" + MARQUEE + """
+<section class="band paper" id="work"><div class="wrap">
+  <div class="head reveal"><div class="eyebrow">Real jobs</div><div class="rule"></div><h2>Before &amp; after, dragged to reveal.</h2><p class="sub">Slide across each photo to see the difference &mdash; all real R. Reeds jobs across Chichester and West Sussex.</p></div>
+  <div class="stories">
+    <article class="story reveal">""" + _ba("cottage-before.jpg","cottage-after.jpg","Cottage room re-plaster") + """<div class="story-copy"><h3>Beamed cottage re-plaster</h3><p>Tired, patchy walls in a period cottage stripped back and re-skimmed to a smooth, even finish ready for paint.</p><div class="chips"><span class="chip">Plastering</span><span class="chip">Period property</span></div></div></article>
+    <article class="story reveal">""" + _ba("room-before.jpg","room-after.jpg","Period room repaint") + """<div class="story-copy"><h3>Period room transformed</h3><p>Freshly plastered walls and ceiling taken through to a crisp green finish with bright white woodwork.</p><div class="chips"><span class="chip">Plaster</span><span class="chip">Painting</span><span class="chip">Woodwork</span></div></div></article>
+    <article class="story reveal">""" + _ba("landing-before.jpg","landing-after.jpg","Hallway &amp; landing decorate") + """<div class="story-copy"><h3>Hallway &amp; landing</h3><p>Bare plaster brought up to a warm, even grey throughout the stairs and landing, woodwork picked out in white.</p><div class="chips"><span class="chip">Decorating</span><span class="chip">Stairs &amp; landing</span></div></div></article>
+    <article class="story reveal">""" + _ba("r.jpg","r7.jpg","Chimney breast plastering") + """<div class="story-copy"><h3>Chimney breast re-plaster</h3><p>Old boarding stripped back, beaded and skimmed to a flat, ready-to-decorate finish.</p><div class="chips"><span class="chip">Plastering</span><span class="chip">Skimming</span></div></div></article>
+    <article class="story reveal">""" + _ba("t.jpg","t1.jpg","Commercial office repaint") + """<div class="story-copy"><h3>Commercial office repaint</h3><p>Patch repairs, tidy cutting-in and a calm sage finish across a working office &mdash; out of hours, no disruption.</p><div class="chips"><span class="chip">Commercial</span><span class="chip">Decorating</span></div></div></article>
   </div>
-</section>
+</div></section>
 
-<section class="band paper">
-  <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">On the tools</div><div class="rule"></div><h2>Straight from site.</h2><p class="sub">A few short clips of recent plastering and decorating work.</p></div>
-    <div class="reels reveal">
-      <div class="reel"><video controls preload="metadata" playsinline src="/static/videos/reel-1.mp4"></video></div>
-      <div class="reel"><video controls preload="metadata" playsinline src="/static/videos/reel-2.mp4"></video></div>
-      <div class="reel"><video controls preload="metadata" playsinline src="/static/videos/reel-3.mp4"></video></div>
-    </div>
+<section class="band" id="services"><div class="wrap">
+  <div class="head reveal"><div class="eyebrow">Services</div><div class="rule"></div><h2>The whole job, start to finish.</h2><p class="sub">From repairing damaged walls to the final coat of colour &mdash; and you can send photos straight from the chat while Rob's on site.</p></div>
+  <div class="cards">
+    <div class="card reveal"><div class="num">01</div><h3>Plastering &amp; skimming</h3><p>Walls, ceilings, chimney breasts, re-skims over artex and patch repairs.</p></div>
+    <div class="card reveal"><div class="num">02</div><h3>Painting &amp; decorating</h3><p>Rooms, feature walls, ceilings, doors, frames and skirting &mdash; neat lines guaranteed.</p></div>
+    <div class="card reveal"><div class="num">03</div><h3>Exterior &amp; woodwork</h3><p>Masonry, render, timber, doors and outdoor refreshes that hold up to the weather.</p></div>
+    <div class="card reveal"><div class="num">04</div><h3>Commercial work</h3><p>Offices and business spaces, worked tidily and around your opening hours.</p></div>
   </div>
-</section>
+</div></section>
 
-<section class="band" id="gallery-preview">
-  <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">Gallery</div><div class="rule"></div><h2>Recent work, real photos.</h2><p class="sub">Tap any photo to view it full size. No stock images &mdash; every shot is a Reeds job.</p></div>
-    <div class="gallery reveal">""" + _shots([
-        ("r4.jpg","Chimney skim"),("room-after.jpg","Room repaint"),("t1.jpg","Office finish"),
-        ("e.jpg","Ceiling skim"),("green-1.jpg","Decorated room"),("kitchen-skim.jpg","Kitchen re-plaster"),
-        ("ttttttt.jpg","Office, finished"),("ee.jpg","Stairwell ceiling"),
-    ]) + """</div>
-    <p style="margin-top:22px"><a href="/gallery">Open the full gallery &rarr;</a></p>
+<section class="band paper"><div class="wrap">
+  <div class="head reveal"><div class="eyebrow">On the tools</div><div class="rule"></div><h2>Straight from site.</h2><p class="sub">A few short clips of recent plastering and decorating work.</p></div>
+  <div class="reels reveal">
+    <div class="reel"><video controls preload="metadata" playsinline src="/static/videos/reel-1.mp4"></video></div>
+    <div class="reel"><video controls preload="metadata" playsinline src="/static/videos/reel-2.mp4"></video></div>
+    <div class="reel"><video controls preload="metadata" playsinline src="/static/videos/reel-3.mp4"></video></div>
   </div>
-</section>
+</div></section>
 
-<section class="band paper" id="reviews">
-  <div class="wrap">
-    <div class="head reveal"><div class="eyebrow">Reviews</div><div class="rule"></div><h2>Rated 9.9/10 on Checkatrade.</h2><p class="sub">From 244 verified reviews across Chichester, Bognor Regis and the surrounding area.</p></div>
-    <div class="review-summary reveal">
-      <div class="score-box"><b>9.9</b><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span>Checkatrade average from 244 reviews</span></div>
-      <div class="review-note"><div class="eyebrow">Why it matters</div><p>Short, specific reviews give new customers the confidence to send photos and ask for a quote &mdash; which is exactly what the assistant on this site is built to capture.</p></div>
-    </div>
-    <div class="reviews-grid">
-      <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skimming a wall</h3><p>Rob is very polite and a tidy worker. Very pleased with the result.</p><div class="review-meta">Chichester</div></article>
-      <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skim over artex</h3><p>Prompt and did a clean job for a reasonable price. Would recommend.</p><div class="review-meta">Richard, Chichester</div></article>
-      <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Plastering bathroom walls</h3><p>Brilliant. Good price, fast turnaround, polite, extremely happy with the work.</p><div class="review-meta">Steve, Chichester</div></article>
-      <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Bedroom walls skimmed</h3><p>Professional, friendly and competitively priced. Left the area neat and tidy.</p><div class="review-meta">Sean, Chichester</div></article>
-      <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Ceiling crack repair</h3><p>Great work and a great price. Quick, clean and helpful advice for future jobs.</p><div class="review-meta">Jacob, Bognor Regis</div></article>
-      <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Rooms &amp; stairwell plastered</h3><p>Plastered and painted bedrooms plus a hallway and staircase. Very happy, fair prices.</p><div class="review-meta">Catherine, Havant</div></article>
-    </div>
+<section class="band"><div class="wrap">
+  <div class="head reveal"><div class="eyebrow">Gallery</div><div class="rule"></div><h2>Recent work, real photos.</h2><p class="sub">Tap any photo to view it full size. No stock images &mdash; every shot is a Reeds job.</p></div>
+  <div class="gallery reveal">""" + _shots([
+      ("house-1.jpg","Exterior &amp; door"),("room-after.jpg","Room repaint"),("cottage-after.jpg","Cottage plaster"),
+      ("t1.jpg","Office finish"),("r4.jpg","Chimney skim"),("landing-after.jpg","Landing decorate"),
+      ("green-1.jpg","Decorated room"),("kitchen-skim.jpg","Kitchen re-plaster"),
+  ]) + """</div>
+  <p style="margin-top:22px"><a href="/gallery">Open the full gallery &rarr;</a></p>
+</div></section>
+
+<section class="band paper" id="reviews"><div class="wrap">
+  <div class="head reveal"><div class="eyebrow">Reviews</div><div class="rule"></div><h2>Rated 9.9/10 on Checkatrade.</h2><p class="sub">From 244 verified reviews across Chichester, Bognor Regis and the surrounding area.</p></div>
+  <div class="review-summary reveal">
+    <div class="score-box"><b>9.9</b><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span>Checkatrade average from 244 reviews</span></div>
+    <div class="review-note"><div class="eyebrow">Why it matters</div><p>Short, specific reviews give new customers the confidence to send photos and ask for a quote &mdash; which is exactly what the assistant on this site is built to capture.</p></div>
   </div>
-</section>
+  <div class="reviews-grid">
+    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skimming a wall</h3><p>Rob is very polite and a tidy worker. Very pleased with the result.</p><div class="review-meta">Chichester</div></article>
+    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skim over artex</h3><p>Prompt and did a clean job for a reasonable price. Would recommend.</p><div class="review-meta">Richard, Chichester</div></article>
+    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Plastering bathroom walls</h3><p>Brilliant. Good price, fast turnaround, polite, extremely happy with the work.</p><div class="review-meta">Steve, Chichester</div></article>
+    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Bedroom walls skimmed</h3><p>Professional, friendly and competitively priced. Left the area neat and tidy.</p><div class="review-meta">Sean, Chichester</div></article>
+    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Ceiling crack repair</h3><p>Great work and a great price. Quick, clean and helpful advice for future jobs.</p><div class="review-meta">Jacob, Bognor Regis</div></article>
+    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Rooms &amp; stairwell plastered</h3><p>Plastered and painted bedrooms plus a hallway and staircase. Very happy, fair prices.</p><div class="review-meta">Catherine, Havant</div></article>
+  </div>
+</div></section>
 """ + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 GALLERY_PAGE = """
@@ -770,15 +743,17 @@ GALLERY_PAGE = """
 <section class="band"><div class="wrap">
   <div class="head reveal"><div class="eyebrow">Plastering &amp; skimming</div><div class="rule"></div><h2>Plastering work.</h2><p class="sub">Tap any photo to view it full size.</p></div>
   <div class="gallery reveal">""" + _shots([
-      ("r4.jpg","Chimney skim"),("r6.jpg","Fireplace re-plaster"),("r7.jpg","Chimney breast"),
-      ("e.jpg","Ceiling skim"),("ee.jpg","Stairwell ceiling"),("kitchen-skim.jpg","Kitchen re-plaster"),
-      ("blue-ceiling-1.jpg","Ceiling repair"),("blue-ceiling-2.jpg","Skimmed ceiling"),
-      ("room-before.jpg","Room, freshly plastered"),
+      ("cottage-after.jpg","Cottage re-plaster"),("r4.jpg","Chimney skim"),("r6.jpg","Fireplace re-plaster"),
+      ("r7.jpg","Chimney breast"),("e.jpg","Ceiling skim"),("ee.jpg","Stairwell ceiling"),
+      ("kitchen-skim.jpg","Kitchen re-plaster"),("blue-ceiling-1.jpg","Ceiling repair"),
+      ("blue-ceiling-2.jpg","Skimmed ceiling"),("room-before.jpg","Room, freshly plastered"),
   ]) + """</div>
   <div class="head reveal" style="margin-top:54px"><div class="eyebrow">Painting &amp; decorating</div><div class="rule"></div><h2>Decorating work.</h2></div>
   <div class="gallery reveal">""" + _shots([
-      ("room-after.jpg","Period room repaint"),("green-1.jpg","Decorated room"),("green-2.jpg","Green feature wall"),
-      ("green-3.jpg","Finished room"),("t1.jpg","Office, sage finish"),("ttttt.jpg","Office, decorated"),
+      ("house-1.jpg","Exterior &amp; door"),("house-2.jpg","Rendered front"),("door-purple.jpg","Door painting"),
+      ("room-after.jpg","Period room repaint"),("landing-after.jpg","Landing decorate"),("hall-after.jpg","Hallway finish"),
+      ("hall-before.jpg","Hallway prep"),("green-1.jpg","Decorated room"),("green-2.jpg","Feature wall"),
+      ("green-3.jpg","Finished room"),("t1.jpg","Office, sage finish"),("ttttt.jpg","Office decorated"),
       ("tttt.jpg","Office space"),("ttttttt.jpg","Bright finish"),("ttttttttttt.jpg","Meeting room"),
   ]) + """</div>
 </div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
@@ -789,7 +764,7 @@ SERVICES_PAGE = """
 <div class="card reveal"><div class="num">01</div><h3>Plastering</h3><p>Skimming, ceilings, patch repairs, chimney breasts, re-skims over artex and damaged walls.</p></div>
 <div class="card reveal"><div class="num">02</div><h3>Painting</h3><p>Walls, ceilings, woodwork, feature walls and full room refreshes.</p></div>
 <div class="card reveal"><div class="num">03</div><h3>Decorating</h3><p>Preparation, filling, sanding and tidy finishing details throughout.</p></div>
-<div class="card reveal"><div class="num">04</div><h3>Exterior &amp; commercial</h3><p>Masonry, timber, doors, offices and business spaces worked around your hours.</p></div>
+<div class="card reveal"><div class="num">04</div><h3>Exterior &amp; commercial</h3><p>Masonry, render, timber, doors, offices and business spaces worked around your hours.</p></div>
 </div></div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 CONTACT_PAGE = """
@@ -802,12 +777,25 @@ CONTACT_PAGE = """
 </div></div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 PRIVACY_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Privacy - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
-<section class="band paper"><div class="wrap narrow"><div class="head"><div class="eyebrow">Privacy</div><div class="rule"></div><h2>Privacy Policy</h2><p class="sub">This demo only collects details people choose to send for a quote.</p></div>
-<p>When someone uses the chat assistant, it may collect their name, contact details, postcode or area, job details, budget, urgency and photos they upload. This is used only to respond to the enquiry and prepare a quote.</p>
-<p>Messages may be processed by the AI chat provider to generate replies, and lead emails may be sent using an email provider. The information is not sold and is not used for advertising.</p>
-<p>Customers can request correction or deletion of their details by contacting <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a>.</p>
-</div></section>""" + FOOTER + WIDGET_INCLUDE + "</body></html>"
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Privacy Policy - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<section class="band"><div class="wrap narrow">
+  <div class="head reveal"><div class="eyebrow">Legal</div><div class="rule"></div><h2>Privacy Policy</h2><p class="sub">How R. Reeds Plastering &amp; Decorating handles the information you share through this website.</p></div>
+  <div class="prose reveal">
+    <p>This policy explains what information we collect when you use this website or its chat assistant, why we collect it, and how it is kept. By sending an enquiry you agree to the points below.</p>
+    <h3>What we collect</h3>
+    <p>When you contact us through the chat assistant, contact form, phone, email or WhatsApp we may collect your name, phone number, email address, the details of the job you describe, and any photos you choose to upload. We only collect what you choose to give us &mdash; nothing is gathered without you entering it.</p>
+    <h3>Why we collect it</h3>
+    <p>We use this information for one purpose: to understand your job, reply to you, and provide a quote or arrange the work. We do not use it for marketing unless you ask us to.</p>
+    <h3>How it is handled</h3>
+    <p>Enquiry details are sent to our own inbox so we can respond. To run the site we use trusted service providers &mdash; including a chat/AI provider to power the assistant and an email provider to deliver enquiries &mdash; who process the information only to provide that service. We do not sell or rent your information to anyone.</p>
+    <h3>How long we keep it</h3>
+    <p>We keep enquiry information only for as long as needed to deal with your job and our records, then remove it.</p>
+    <h3>Your rights</h3>
+    <p>You can ask us what information we hold about you, ask us to correct it, or ask us to delete it at any time. Just get in touch using the details below.</p>
+    <h3>Contact</h3>
+    <p>R. Reeds Plastering &amp; Decorating, Chichester, West Sussex.<br>Email: <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; Phone: <a href="tel:+447880256562">07880 256562</a></p>
+  </div>
+</div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 WIDGET_JS = """
 (function(){
