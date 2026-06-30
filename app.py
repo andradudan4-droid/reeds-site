@@ -500,6 +500,8 @@ BASE_STYLE = """
   .brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-weight:800;letter-spacing:.16em;font-size:15px}
   .brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;border:1px solid var(--line)}
   .links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}.links a{color:#ece7ff;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.02em}.links a:hover{color:var(--pink)}
+  .links a.navsoc{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03);padding:0}
+  .links a.navsoc:hover{border-color:var(--pink)}
   .navcta{background:linear-gradient(135deg,var(--violet),var(--pink));padding:10px 16px;border-radius:999px;color:#fff!important;box-shadow:0 8px 24px rgba(168,85,247,.3)}
   .hero{position:relative;overflow:hidden;padding:70px 24px 58px;background:
      radial-gradient(900px 520px at 78% 8%,rgba(124,58,237,.34),transparent 60%),
@@ -594,7 +596,7 @@ BASE_STYLE = """
     .hcard .frame img{aspect-ratio:16/11}
     .hbadge{left:auto;right:10px;bottom:10px;padding:9px 12px}.hbadge b{font-size:19px}
     .story,.story:nth-child(even){grid-template-columns:1fr}.story:nth-child(even) .story-copy{order:0}
-    .review-summary{grid-template-columns:1fr}.links a:not(.navcta){display:none}
+    .review-summary{grid-template-columns:1fr}.links a:not(.navcta){display:none}.links a.navsoc{display:grid}
     .band{padding:50px 18px}.gallery{grid-template-columns:1fr 1fr}
   }
 </style>
@@ -606,6 +608,8 @@ NAV = """
   <div class="links">
     <a href="/#work">Work</a><a href="/#services">Services</a><a href="/#reviews">Reviews</a>
     <a href="/gallery">Gallery</a><a href="/contact">Contact</a>
+    <a class="navsoc" href="https://www.facebook.com/profile.php?id=100044246966322" target="_blank" rel="noopener" aria-label="R. Reeds on Facebook"><svg viewBox="0 0 24 24" width="18" height="18" fill="#e879f9"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+    <a class="navsoc" href="https://www.tiktok.com/@r.reedsdecorplasterers1" target="_blank" rel="noopener" aria-label="R. Reeds on TikTok"><svg viewBox="0 0 24 24" width="17" height="17" fill="#e879f9"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.3v12.3a2.4 2.4 0 1 1-2.4-2.4c.2 0 .5 0 .7.1V9.6a5.7 5.7 0 0 0-.7 0 5.7 5.7 0 1 0 5.7 5.7V9.2a7.5 7.5 0 0 0 4.4 1.4V7.3a4.3 4.3 0 0 1-3.4-1.5z"/></svg></a>
     <a class="navcta" href="tel:+447880256562">Free quote</a>
   </div>
 </nav>
@@ -613,7 +617,7 @@ NAV = """
 
 WA_SVG = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5a12.7 12.7 0 0 1-2-6.8C3.2 8.8 8.9 3.2 16 3.2c7 0 12.7 5.7 12.7 12.7S23 28.7 16 28.7zm7-9.5c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2-.2.4-.9 1.3-1.1 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.8-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg>'
 
-MARQUEE_GRP = ('<span class="grp"><span class="star">&#9733;</span> 9.9/10 on Checkatrade <i>&bull;</i> 244 verified reviews <i>&bull;</i> 20+ years of experience <i>&bull;</i> Which? Trusted Trader <i>&bull;</i> TrustATrader approved <i>&bull;</i> Free written quotes <i>&bull;</i> Plastering <i>&bull;</i> Painting <i>&bull;</i> Decorating <i>&bull;</i> Chichester &amp; West Sussex <i>&bull;</i></span>')
+MARQUEE_GRP = ('<span class="grp"><span class="star">&#9733;</span> 9.9/10 on Checkatrade <i>&bull;</i> 244 verified reviews <i>&bull;</i> 20+ years of experience <i>&bull;</i> MyBuilder <i>&bull;</i> Free written quotes <i>&bull;</i> Plastering <i>&bull;</i> Painting <i>&bull;</i> Decorating <i>&bull;</i> Chichester &amp; West Sussex <i>&bull;</i></span>')
 MARQUEE = '<div class="marquee"><div class="track">' + MARQUEE_GRP + MARQUEE_GRP + '</div></div>'
 
 FOOTER = """
@@ -621,21 +625,13 @@ FOOTER = """
   <h2>Got a job in mind?</h2>
   <p>Send a few photos through the chat and get a free, no-obligation estimate.</p>
   <div class="btns" style="justify-content:center"><a class="btn" href="tel:+447880256562">Call 07880 256562</a><a class="btn wa" href="https://wa.me/447880256562" target="_blank" rel="noopener">WhatsApp</a></div>
-  <div class="badges"><span class="badge"><span class="star">&#9733;</span> 9.9/10 Checkatrade</span><span class="badge">244 reviews</span><span class="badge">Which? Trusted Trader</span><span class="badge">TrustATrader approved</span><span class="badge">20+ years</span></div>
+  <div class="badges"><span class="badge"><span class="star">&#9733;</span> 9.9/10 Checkatrade</span><span class="badge">244 reviews</span><span class="badge">MyBuilder</span><span class="badge">20+ years</span></div>
 </div></div></section>
 <footer>
   <img src="/static/images/logo.jpg" alt="R. Reeds logo">
   <div style="color:#fff;font-weight:800;letter-spacing:.14em">R.REEDS PLASTERING &amp; DECORATING</div>
   <div style="margin-top:6px">Chichester, PO19 &middot; covering Bognor Regis, Emsworth, Selsey, Arundel &amp; West Sussex</div>
   <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy Policy</a></div>
-  <div style="margin-top:18px;display:flex;gap:12px;justify-content:center">
-    <a href="https://www.facebook.com/profile.php?id=100044246966322" target="_blank" rel="noopener" aria-label="R. Reeds on Facebook" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03)">
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="#e879f9"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
-    </a>
-    <a href="https://www.tiktok.com/@r.reedsdecorplasterers1" target="_blank" rel="noopener" aria-label="R. Reeds on TikTok" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.03)">
-      <svg viewBox="0 0 24 24" width="19" height="19" fill="#e879f9"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3.3v12.3a2.4 2.4 0 1 1-2.4-2.4c.2 0 .5 0 .7.1V9.6a5.7 5.7 0 0 0-.7 0 5.7 5.7 0 1 0 5.7 5.7V9.2a7.5 7.5 0 0 0 4.4 1.4V7.3a4.3 4.3 0 0 1-3.4-1.5z"/></svg>
-    </a>
-  </div>
 </footer>
 <a class="wa-float" href="https://wa.me/447880256562" target="_blank" rel="noopener" aria-label="WhatsApp R. Reeds">""" + WA_SVG + """</a>
 <div class="lb" id="lb" onclick="this.classList.remove('open')"><span class="x">&times;</span><img id="lbimg" src="" alt=""></div>
