@@ -880,7 +880,7 @@ def ensure_session():
 @app.route("/sitemap.xml")
 def sitemap():
     pages = ["/", "/services", "/gallery", "/contact", "/privacy-policy"]
-    base = "BASE_URL = "https://reedsplasteranddecor.co.uk""
+    base = "https://reedsplasteranddecor.co.uk"
     urls = "".join(f"<url><loc>{base}{p}</loc></url>" for p in pages)
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
     return Response(xml, mimetype="application/xml")
