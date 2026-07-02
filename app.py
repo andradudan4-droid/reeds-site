@@ -840,7 +840,7 @@ PRIVACY_PAGE = """
 
 WIDGET_JS = """
 (function(){
-  var base = new URL(document.currentScript.src).origin;
+  var  = new URL(document.currentScript.src).origin;
   var bubble = document.createElement('button');
   bubble.innerHTML = 'Chat';
   bubble.setAttribute('aria-label','Open quote assistant');
@@ -880,14 +880,14 @@ def ensure_session():
 @app.route("/sitemap.xml")
 def sitemap():
     pages = ["/", "/services", "/gallery", "/contact", "/privacy-policy"]
-    base = "https://reeds-demo.onrender.com"
+    base = "BASE_URL = "https://reedsplasteranddecor.co.uk""
     urls = "".join(f"<url><loc>{base}{p}</loc></url>" for p in pages)
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
     return Response(xml, mimetype="application/xml")
 
 @app.route("/robots.txt")
 def robots():
-    return Response("User-agent: *\nAllow: /\nSitemap: https://reeds-demo.onrender.com/sitemap.xml", mimetype="text/plain")
+    return Response("User-agent: *\nAllow: /\nSitemap: https://reedsplasteranddecor.co.uk/sitemap.xml", mimetype="text/plain")
 
 @app.route("/")
 def home():
