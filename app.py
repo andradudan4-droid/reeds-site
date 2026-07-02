@@ -476,6 +476,7 @@ final wrap-up message, on its own line.
 
 
 BASE_STYLE = """
+<meta name="google-site-verification" content="eVQdG_IURAAD4ym4dbTEZMj7PynMYeEs7eJgbAeihOU" />
 <link rel="icon" type="image/jpeg" href="/static/images/logo.jpg">
 <meta name="theme-color" content="#050506">
 <meta property="og:type" content="website">
