@@ -567,6 +567,13 @@ BASE_STYLE = """
   .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
   .review-card{background:#fff;border:1px solid rgba(109,40,217,.12);border-radius:16px;padding:21px;box-shadow:0 12px 32px rgba(32,14,54,.05)}
   .stars{color:#ffb400;font-weight:900;letter-spacing:.08em;font-size:14px}.review-card h3{margin:9px 0 8px;font-size:16px;line-height:1.3;color:#21162b}.review-card p{margin:0;color:#554d5e;font-size:14px}.review-meta{margin-top:14px;color:#7a7184;font-size:12px;font-weight:800}
+  .ck-badge{display:inline-flex;align-items:center;gap:16px;background:#fff;border:1px solid rgba(109,40,217,.14);border-radius:16px;padding:14px 20px;text-decoration:none;box-shadow:0 12px 32px rgba(32,14,54,.06);margin-bottom:24px}
+  .ck-badge:hover{border-color:rgba(255,63,63,.45)}
+  .ck-tick{width:40px;height:40px;border-radius:9px;background:#FF3F3F;display:grid;place-items:center;flex:none}
+  .ck-text{display:flex;flex-direction:column;line-height:1.25}.ck-text b{color:#21162b;font-size:16px}.ck-text span{color:#7a7184;font-size:12px;font-weight:700}
+  .ck-div{width:1px;height:34px;background:rgba(109,40,217,.14)}
+  .ck-score{display:flex;flex-direction:column;line-height:1.12}.ck-score b{color:#FF3F3F;font-size:22px}.ck-score span{color:#7a7184;font-size:12px;font-weight:700}
+  .ck-more{display:inline-block;margin-top:26px;color:#6d28d9;font-weight:800;text-decoration:none;font-size:14px}.ck-more:hover{text-decoration:underline}
   .contact-box{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px}.contact-box p{margin:10px 0}
   .prose{color:#ccc3e0;max-width:760px}.prose h3{color:#fff;font-size:18px;margin:26px 0 8px}.prose p{margin:0 0 12px;font-size:15px;line-height:1.7}.prose a{color:var(--pink)}
   .ctaband{background:linear-gradient(135deg,#1a1126,#0c0913);border:1px solid var(--line);border-radius:24px;padding:42px;text-align:center}
@@ -618,7 +625,7 @@ NAV = """
 
 WA_SVG = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2 7.8L.3 31.6l8.1-2.1c2.3 1.3 4.9 1.9 7.6 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.3c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5a12.7 12.7 0 0 1-2-6.8C3.2 8.8 8.9 3.2 16 3.2c7 0 12.7 5.7 12.7 12.7S23 28.7 16 28.7zm7-9.5c-.4-.2-2.3-1.1-2.6-1.3-.3-.1-.6-.2-.8.2-.2.4-.9 1.3-1.1 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.2-.8l.6-.7c.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7-.1-.2-.8-2-1.1-2.8-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg>'
 
-MARQUEE_GRP = ('<span class="grp"><span class="star">&#9733;</span> 9.9/10 on Checkatrade <i>&bull;</i> 244 verified reviews <i>&bull;</i> 20+ years of experience <i>&bull;</i> MyBuilder <i>&bull;</i> Free written quotes <i>&bull;</i> Plastering <i>&bull;</i> Painting <i>&bull;</i> Decorating <i>&bull;</i> Chichester &amp; West Sussex <i>&bull;</i></span>')
+MARQUEE_GRP = ('<span class="grp"><span class="star">&#9733;</span> 9.9/10 on Checkatrade <i>&bull;</i> 248 verified reviews <i>&bull;</i> 20+ years of experience <i>&bull;</i> MyBuilder <i>&bull;</i> Free written quotes <i>&bull;</i> Plastering <i>&bull;</i> Painting <i>&bull;</i> Decorating <i>&bull;</i> Chichester &amp; West Sussex <i>&bull;</i></span>')
 MARQUEE = '<div class="marquee"><div class="track">' + MARQUEE_GRP + MARQUEE_GRP + '</div></div>'
 
 FOOTER = """
@@ -626,7 +633,7 @@ FOOTER = """
   <h2>Got a job in mind?</h2>
   <p>Send a few photos through the chat and get a free, no-obligation estimate.</p>
   <div class="btns" style="justify-content:center"><a class="btn" href="tel:+447880256562">Call 07880 256562</a><a class="btn wa" href="https://wa.me/447880256562" target="_blank" rel="noopener">WhatsApp</a></div>
-  <div class="badges"><span class="badge"><span class="star">&#9733;</span> 9.9/10 Checkatrade</span><span class="badge">244 reviews</span><span class="badge">MyBuilder</span><span class="badge">20+ years</span></div>
+  <div class="badges"><span class="badge"><span class="star">&#9733;</span> 9.9/10 Checkatrade</span><span class="badge">248 reviews</span><span class="badge">MyBuilder</span><span class="badge">20+ years</span></div>
 </div></div></section>
 <footer>
   <img src="/static/images/logo.jpg" alt="R. Reeds logo">
@@ -701,7 +708,7 @@ HOME_PAGE = """
   </div>
   <aside class="hcard reveal">
     <div class="frame"><img src="/static/images/house-2.jpg" alt="White rendered house with purple door, decorated by R. Reeds"></div>
-    <div class="hbadge"><div><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>9.9</b></div><div><span style="color:#fff;font-weight:800">Checkatrade</span><span>244 reviews</span></div></div>
+    <div class="hbadge"><div><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><b>9.9</b></div><div><span style="color:#fff;font-weight:800">Checkatrade</span><span>248 reviews</span></div></div>
   </aside>
 </div></header>
 """ + MARQUEE + """
@@ -764,18 +771,24 @@ HOME_PAGE = """
 </div></section>
 
 <section class="band paper" id="reviews"><div class="wrap">
-  <div class="head reveal"><div class="eyebrow">Reviews</div><div class="rule"></div><h2>Rated 9.9/10 on Checkatrade.</h2><p class="sub">From 244 verified reviews across Chichester, Bognor Regis and the surrounding area.</p></div>
-  <div class="reveal" style="margin-bottom:20px">
-    <div class="score-box" style="flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap"><b style="margin:0">9.9</b><div><div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span>Checkatrade average from 244 verified reviews</span></div></div>
+  <div class="head reveal"><div class="eyebrow">Reviews</div><div class="rule"></div><h2>Rated 9.9/10 on Checkatrade.</h2><p class="sub">From 248 verified reviews across Chichester, Bognor Regis and the surrounding area.</p></div>
+  <div class="reveal">
+    <a class="ck-badge" href="https://www.checkatrade.com/trades/rreedsplasteringdecoratingservices" target="_blank" rel="noopener" aria-label="R. Reeds on Checkatrade">
+      <span class="ck-tick"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <span class="ck-text"><b>Checkatrade</b><span>Verified member since 2014</span></span>
+      <span class="ck-div"></span>
+      <span class="ck-score"><b>9.94</b><span>248 reviews</span></span>
+    </a>
   </div>
   <div class="reviews-grid">
-    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skimming a wall</h3><p>Rob is very polite and a tidy worker. Very pleased with the result.</p><div class="review-meta">Chichester</div></article>
-    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skim over artex</h3><p>Prompt and did a clean job for a reasonable price. Would recommend.</p><div class="review-meta">Richard, Chichester</div></article>
-    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Plastering bathroom walls</h3><p>Brilliant. Good price, fast turnaround, polite, extremely happy with the work.</p><div class="review-meta">Steve, Chichester</div></article>
-    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Bedroom walls skimmed</h3><p>Professional, friendly and competitively priced. Left the area neat and tidy.</p><div class="review-meta">Sean, Chichester</div></article>
-    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Ceiling crack repair</h3><p>Great work and a great price. Quick, clean and helpful advice for future jobs.</p><div class="review-meta">Jacob, Bognor Regis</div></article>
-    <article class="review-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Rooms &amp; stairwell plastered</h3><p>Plastered and painted bedrooms plus a hallway and staircase. Very happy, fair prices.</p><div class="review-meta">Catherine, Havant</div></article>
+    <article class="review-card reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Easy and straightforward, no stress</h3><p>From first contact to the finished result the communication was great &mdash; friendly, informative, and tidied up afterwards. Already booked for the next job!</p><div class="review-meta">Tanya R &middot; PO6 &middot; June 2026</div></article>
+    <article class="review-card reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Great work</h3><p>Rob was really helpful and got the job done quickly. Clean and tidy, and gave me advice on other bits I needed doing. Will be using him again.</p><div class="review-meta">Verified customer &middot; PO19 &middot; May 2026</div></article>
+    <article class="review-card reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Outstanding work</h3><p>Arrived exactly when he said and never left until the job was done. A real perfectionist &mdash; everything so straight, and such a tidy worker. Highly recommend.</p><div class="review-meta">Verified customer &middot; PO21 &middot; May 2026</div></article>
+    <article class="review-card reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Put a ceiling on my den</h3><p>Rob went above and beyond &mdash; honest, hard-working and lovely with my little one. Left an amazing finish and kept me updated the whole way. 100% recommend.</p><div class="review-meta">Adam W &middot; PO18 &middot; April 2026</div></article>
+    <article class="review-card reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>Skimmed ceilings</h3><p>Took the time to explain the process and tidied up throughout. Very happy with the high quality of workmanship &mdash; a pleasure to have him in our home.</p><div class="review-meta">Verified customer &middot; PO8 &middot; April 2026</div></article>
+    <article class="review-card reveal"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><h3>New and existing walls plastered</h3><p>A first-rate job on our new dividing wall and patch repairs. Great communication, a very reasonable quote, punctual and professional. Highly recommended.</p><div class="review-meta">Mark D &middot; PO10 &middot; April 2026</div></article>
   </div>
+  <div style="text-align:center"><a class="ck-more" href="https://www.checkatrade.com/trades/rreedsplasteringdecoratingservices/reviews" target="_blank" rel="noopener">Read all 248 reviews on Checkatrade &rarr;</a></div>
 </div></section>
 """ + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
