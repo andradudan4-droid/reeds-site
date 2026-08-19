@@ -607,6 +607,21 @@ BASE_STYLE = """
     .review-summary{grid-template-columns:1fr}.links a:not(.navcta){display:none}.links a.navsoc{display:grid}
     .band{padding:50px 18px}.gallery{grid-template-columns:1fr 1fr}
   }
+  .cc-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:999999;max-width:640px;margin:0 auto;
+    background:rgba(10,10,10,.92);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);
+    border-radius:10px;padding:16px 18px;display:none;align-items:center;gap:16px;flex-wrap:wrap;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);transform:translateY(12px);opacity:0;transition:transform .35s ease,opacity .35s ease}
+  .cc-bar.cc-show{display:flex}
+  .cc-bar.cc-in{transform:translateY(0);opacity:1}
+  .cc-bar p{margin:0;color:#eee;font-size:13.5px;line-height:1.5;flex:1 1 260px}
+  .cc-bar a{color:#e879f9;text-decoration:underline}
+  .cc-actions{display:flex;gap:10px;flex:0 0 auto}
+  .cc-btn{font-family:inherit;font-size:13px;font-weight:700;padding:9px 16px;border-radius:6px;cursor:pointer;white-space:nowrap}
+  .cc-accept{background:#e879f9;color:#0a0a0a;border:1px solid #e879f9}
+  .cc-reject{background:transparent;color:#eee;border:1px solid rgba(255,255,255,.3)}
+  .cc-btn:focus-visible{outline:2px solid #e879f9;outline-offset:2px}
+  @media(max-width:640px){.cc-bar{left:10px;right:10px;bottom:10px;padding:14px}.cc-actions{width:100%;justify-content:flex-end}}
+  @media(prefers-reduced-motion:reduce){.cc-bar{transition:none}}
 </style>
 """
 
@@ -639,10 +654,17 @@ FOOTER = """
   <img src="/static/images/logo.jpg" alt="R. Reeds logo">
   <div style="color:#fff;font-weight:800;letter-spacing:.14em">R.REEDS PLASTERING &amp; DECORATING</div>
   <div style="margin-top:6px">Chichester, PO19 &middot; covering Bognor Regis, Emsworth, Selsey, Arundel &amp; West Sussex</div>
-  <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy Policy</a></div>
+  <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms">Terms &amp; Conditions</a></div>
 </footer>
 <a class="wa-float" href="https://wa.me/447880256562" target="_blank" rel="noopener" aria-label="WhatsApp R. Reeds">""" + WA_SVG + """</a>
 <div class="lb" id="lb" onclick="this.classList.remove('open')"><span class="x">&times;</span><img id="lbimg" src="" alt=""></div>
+<div class="cc-bar" id="ccBar" role="region" aria-label="Cookie notice">
+  <p>We use a small number of essential cookies to keep this site working (like remembering your chat session). See our <a href="/privacy-policy">Privacy Policy</a> for details.</p>
+  <div class="cc-actions">
+    <button class="cc-btn cc-reject" id="ccReject" type="button">Reject</button>
+    <button class="cc-btn cc-accept" id="ccAccept" type="button">Accept</button>
+  </div>
+</div>
 """
 
 WIDGET_INCLUDE = '<script src="/widget.js"></script>'
@@ -677,6 +699,29 @@ document.querySelectorAll('.ba').forEach(function(ba){
   L.circle(center,{radius:32187,color:'#a855f7',weight:2,fillColor:'#a855f7',fillOpacity:.14}).addTo(map);
   L.circleMarker(center,{radius:7,color:'#fff',weight:2,fillColor:'#e879f9',fillOpacity:1}).addTo(map).bindPopup('R. Reeds &middot; Chichester PO19');
   setTimeout(function(){map.invalidateSize();},250);
+})();
+(function(){
+  var KEY = 'cookieConsent';
+  var bar = document.getElementById('ccBar');
+  if(!bar) return;
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch(e) {}
+  if(stored !== 'accepted' && stored !== 'rejected'){
+    bar.classList.add('cc-show');
+    requestAnimationFrame(function(){ bar.classList.add('cc-in'); });
+  }
+  function hide(){
+    bar.classList.remove('cc-in');
+    setTimeout(function(){ bar.classList.remove('cc-show'); }, 350);
+  }
+  document.getElementById('ccAccept').addEventListener('click', function(){
+    try { localStorage.setItem(KEY, 'accepted'); } catch(e) {}
+    hide();
+  });
+  document.getElementById('ccReject').addEventListener('click', function(){
+    try { localStorage.setItem(KEY, 'rejected'); } catch(e) {}
+    hide();
+  });
 })();
 </script>
 """
@@ -851,9 +896,35 @@ PRIVACY_PAGE = """
   </div>
 </div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
+TERMS_PAGE = """
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Terms &amp; Conditions - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<section class="band"><div class="wrap narrow">
+  <div class="head reveal"><div class="eyebrow">Legal</div><div class="rule"></div><h2>Terms &amp; Conditions</h2><p class="sub">The terms that apply when you get a quote or book work with R. Reeds Plastering &amp; Decorating.</p></div>
+  <div class="prose reveal">
+    <h3>Quotes and estimates</h3>
+    <p>Quotes are given free and without obligation, based on the information and photos you provide. Prices may be adjusted if the scope of work changes once we see the job in person, and we will always confirm any change with you before proceeding.</p>
+    <h3>Booking and access</h3>
+    <p>Once a quote is accepted, work is scheduled subject to availability. Please ensure reasonable access to the work area and, where relevant, that surfaces are clear so we can start on time.</p>
+    <h3>Cancellations and rescheduling</h3>
+    <p>We ask for as much notice as possible if you need to cancel or reschedule a booked job. Repeated late cancellations may affect future availability.</p>
+    <h3>Workmanship and materials</h3>
+    <p>We carry out all plastering, painting and decorating work to a professional standard using suitable materials for the job. Any warranty on materials is provided by the manufacturer; our own workmanship is guaranteed for a reasonable period after completion &mdash; get in touch if anything is not right and we will put it right.</p>
+    <h3>Liability</h3>
+    <p>We take care to protect your property while working, but ask that valuable or fragile items are moved clear of the work area beforehand. Our liability for loss or damage is limited to matters directly caused by our negligence.</p>
+    <h3>Payment</h3>
+    <p>Payment terms are agreed at the time of quoting. Larger jobs may require a deposit or staged payments, which will be set out clearly before work begins.</p>
+    <h3>Website and chat use</h3>
+    <p>The quote assistant on this site is provided to help gather job details quickly and give an indicative estimate. Final pricing is confirmed by us directly. Please do not submit false information or attempt to misuse the site.</p>
+    <h3>Governing law</h3>
+    <p>These terms are governed by the law of England and Wales.</p>
+    <h3>Contact</h3>
+    <p>R. Reeds Plastering &amp; Decorating, Chichester, West Sussex.<br>Email: <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; Phone: <a href="tel:+447880256562">07880 256562</a></p>
+  </div>
+</div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
+
 WIDGET_JS = """
 (function(){
-  var  = new URL(document.currentScript.src).origin;
+  var base = new URL(document.currentScript.src).origin;
   var bubble = document.createElement('button');
   bubble.innerHTML = 'Chat';
   bubble.setAttribute('aria-label','Open quote assistant');
@@ -892,7 +963,7 @@ def ensure_session():
 
 @app.route("/sitemap.xml")
 def sitemap():
-    pages = ["/", "/services", "/gallery", "/contact", "/privacy-policy"]
+    pages = ["/", "/services", "/gallery", "/contact", "/privacy-policy", "/terms"]
     base = "https://reedsplasteranddecor.co.uk"
     urls = "".join(f"<url><loc>{base}{p}</loc></url>" for p in pages)
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
@@ -927,6 +998,12 @@ def contact():
 def privacy():
     ensure_session()
     return render_template_string(PRIVACY_PAGE)
+
+@app.route("/terms")
+@app.route("/terms-and-conditions")
+def terms():
+    ensure_session()
+    return render_template_string(TERMS_PAGE)
 
 @app.route("/widget.js")
 def widget_js():
