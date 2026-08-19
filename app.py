@@ -174,7 +174,7 @@ def summarise_lead(conversation):
     """Uses the model to extract a tidy, organised lead from the chat."""
     try:
         resp = client_chat(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[
                 {"role": "system", "content": LEAD_SUMMARY_PROMPT},
                 {"role": "user", "content": _transcript(conversation)},
@@ -521,7 +521,7 @@ BASE_STYLE = """
   .hcard{position:relative}
   .hcard .frame{border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5);background:#000}
   .hcard .frame img{width:100%;aspect-ratio:4/5;object-fit:cover}
-  .hbadge{position:absolute;left:-18px;bottom:26px;background:rgba(12,11,18,.92);border:1px solid var(--line);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:11px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+  .hbadge{position:absolute;left:-18px;tom:26px;background:rgba(12,11,18,.92);border:1px solid var(--line);border-radius:16px;padding:13px 16px;display:flex;align-items:center;gap:11px;box-shadow:0 16px 40px rgba(0,0,0,.5)}
   .hbadge b{font-size:24px;color:#fff;line-height:1;font-family:'Playfair Display',serif}
   .hbadge span{display:block;font-size:11px;color:var(--mut);letter-spacing:.04em}
   .hbadge .st{color:#ffce47;font-size:13px;letter-spacing:1px}
@@ -975,7 +975,7 @@ def chat_endpoint():
 
     try:
         response = client_chat(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=conversation,
             max_tokens=256,
             timeout=20,
