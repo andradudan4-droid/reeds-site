@@ -3,6 +3,7 @@ import os
 import re
 import uuid
 import html
+import hashlib
 import base64
 import threading
 import time
@@ -10,9 +11,17 @@ import requests
 from groq import Groq
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key-change-this-later")
+_fallback_secret = hashlib.sha256(
+    (
+        os.environ.get("GROQ_API_KEY", "")
+        + os.environ.get("RESEND_API_KEY", "")
+        + "reeds-plastering-chichester-v1"
+    ).encode("utf-8")
+).hexdigest()
+app.secret_key = os.environ.get("SECRET_KEY") or _fallback_secret
 app.config["SESSION_COOKIE_SAMESITE"] = "None"
 app.config["SESSION_COOKIE_SECURE"] = True
+app.config["SESSION_COOKIE_HTTPONLY"] = True
 # Photos are resized in the browser before upload, so payloads are small.
 # This is a safety cap to reject anything abnormally large.
 app.config["MAX_CONTENT_LENGTH"] = 12 * 1024 * 1024  # 12 MB
@@ -22,6 +31,50 @@ all_conversations = {}
 session_images = {}
 notified_sessions = set()
 chat_activity = {}
+ip_activity = {}
+pending_lead_timers = {}
+MAX_ACTIVE_SESSIONS = 400
+
+
+def _client_ip():
+    forwarded = request.headers.get("X-Forwarded-For", "")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    return request.remote_addr or "unknown"
+
+
+def _ip_rate_limited(limit_per_min=30):
+    ip = _client_ip()
+    now = time.time()
+    recent = [t for t in ip_activity.get(ip, []) if now - t < 60]
+    if len(recent) >= limit_per_min:
+        ip_activity[ip] = recent
+        return True
+    recent.append(now)
+    ip_activity[ip] = recent
+    if len(ip_activity) > 1000:
+        cutoff = now - 60
+        for k in list(ip_activity.keys()):
+            if not [t for t in ip_activity[k] if t >= cutoff]:
+                ip_activity.pop(k, None)
+    return False
+
+
+def _prune_sessions():
+    while len(all_conversations) > MAX_ACTIVE_SESSIONS:
+        oldest = next(iter(all_conversations))
+        all_conversations.pop(oldest, None)
+        session_images.pop(oldest, None)
+        chat_activity.pop(oldest, None)
+
+
+@app.after_request
+def _set_security_headers(response):
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("X-Frame-Options", "SAMEORIGIN")
+    response.headers.setdefault("Referrer-Policy", "strict-origin-when-cross-origin")
+    return response
+
 
 
 def _decode_image_data_url(data_url):
@@ -478,12 +531,39 @@ final wrap-up message, on its own line.
 BASE_STYLE = """
 <meta name="google-site-verification" content="eVQdG_IURAAD4ym4dbTEZMj7PynMYeEs7eJgbAeihOU" />
 <link rel="icon" type="image/jpeg" href="/static/images/logo.jpg">
+<link rel="canonical" href="https://reedsplasteranddecor.co.uk/">
 <meta name="theme-color" content="#050506">
+<meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="R. Reeds Plastering & Decorating">
 <meta property="og:title" content="R. Reeds Plastering & Decorating - Chichester">
 <meta property="og:description" content="Plastering, painting and decorating in Chichester and West Sussex. Free quotes, photos welcome.">
-<meta property="og:image" content="/static/images/logo.jpg">
+<meta property="og:image" content="https://reedsplasteranddecor.co.uk/static/images/logo.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HousePainter",
+  "name": "R. Reeds Plastering & Decorating",
+  "url": "https://reedsplasteranddecor.co.uk",
+  "logo": "https://reedsplasteranddecor.co.uk/static/images/logo.jpg",
+  "description": "Professional plastering, skimming, painting and decorating in Chichester and across West Sussex.",
+  "telephone": "+447880256562",
+  "email": "rcr.plastering@gmx.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Chichester",
+    "addressRegion": "West Sussex",
+    "postalCode": "PO19",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 50.8365,
+    "longitude": -0.7792
+  },
+  "areaServed": ["Chichester", "West Sussex", "Bognor Regis", "Arundel", "Midhurst", "Emsworth", "Havant"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
@@ -694,9 +774,12 @@ document.querySelectorAll('.ba').forEach(function(ba){
 (function(){
   if(!window.L) return;
   var el=document.getElementById('covmap'); if(!el) return;
+  var st=document.createElement('style');
+  st.textContent='#covmap .leaflet-tile-pane{filter:invert(100%) hue-rotate(180deg) brightness(88%) contrast(92%) grayscale(75%)}';
+  document.head.appendChild(st);
   var center=[50.8365,-0.7792];
   var map=L.map(el,{scrollWheelZoom:false,zoomControl:true}).setView(center,9);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap, &copy; CARTO'}).addTo(map);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(map);
   L.circle(center,{radius:32187,color:'#a855f7',weight:2,fillColor:'#a855f7',fillOpacity:.14}).addTo(map);
   L.circleMarker(center,{radius:7,color:'#fff',weight:2,fillColor:'#e879f9',fillOpacity:1}).addTo(map).bindPopup('R. Reeds &middot; Chichester PO19');
   setTimeout(function(){map.invalidateSize();},250);
@@ -1018,14 +1101,39 @@ def widget_frame():
     ensure_session()
     return render_template_string(WIDGET_FRAME)
 
+def _schedule_lead_fallback(session_id, delay=90.0):
+    old_timer = pending_lead_timers.pop(session_id, None)
+    if old_timer is not None:
+        old_timer.cancel()
+
+    def _fire():
+        pending_lead_timers.pop(session_id, None)
+        if session_id in notified_sessions:
+            return
+        conv = all_conversations.get(session_id)
+        if not conv or not has_contact_info(conv):
+            return
+        notified_sessions.add(session_id)
+        send_lead_email(list(conv), list(session_images.get(session_id, [])))
+
+    t = threading.Timer(delay, _fire)
+    t.daemon = True
+    pending_lead_timers[session_id] = t
+    t.start()
+
+
 @app.route("/chat", methods=["POST"])
 def chat_endpoint():
+    if _ip_rate_limited(limit_per_min=30):
+        return jsonify({"reply": "You're sending messages very quickly - give it a few seconds and try again."})
+
     session_id = session.get("session_id")
     if not session_id:
         session_id = str(uuid.uuid4())
         session["session_id"] = session_id
 
     if session_id not in all_conversations:
+        _prune_sessions()
         all_conversations[session_id] = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     conversation = all_conversations[session_id]
@@ -1081,32 +1189,33 @@ def chat_endpoint():
 
     conversation.append({"role": "assistant", "content": ai_reply})
 
-    # Only email once the assistant has genuinely finished gathering EVERYTHING.
-    # It signals this with the internal [[READY]] tag, which it only adds after
-    # working through the whole checklist (job, scope, budget, area, contact...).
-    # We deliberately do NOT send on wrap-up phrases or a low turn count, because
-    # that was firing before budget/postcode were collected. The fallbacks below
-    # are conservative - only if the visitor clearly signs off, or a very long
-    # chat - so a lead is never lost, but normal chats wait for the full set of
-    # questions. Sent at most once per visitor.
     if session_id not in notified_sessions and has_contact_info(conversation):
         if lead_ready or _looks_like_closing(user_message) or len(conversation) >= 24:
+            old_timer = pending_lead_timers.pop(session_id, None)
+            if old_timer is not None:
+                old_timer.cancel()
             notified_sessions.add(session_id)
             conversation_copy = list(conversation)
             images_copy = list(session_images.get(session_id, []))
             send_lead_email(conversation_copy, images_copy)
+        else:
+            _schedule_lead_fallback(session_id, delay=90.0)
 
     return jsonify({"reply": ai_reply})
 
 
 @app.route("/upload", methods=["POST"])
 def upload_endpoint():
+    if _ip_rate_limited(limit_per_min=20):
+        return jsonify({"reply": "Please wait a moment before uploading another photo."}), 429
+
     session_id = session.get("session_id")
     if not session_id:
         session_id = str(uuid.uuid4())
         session["session_id"] = session_id
 
     if session_id not in all_conversations:
+        _prune_sessions()
         all_conversations[session_id] = [{"role": "system", "content": SYSTEM_PROMPT}]
     conversation = all_conversations[session_id]
 
