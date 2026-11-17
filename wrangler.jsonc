@@ -1,0 +1,23 @@
+{
+  "name": "reeds-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-01-01",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "html_handling": "drop-trailing-slash"
+  },
+  // TESTING: enquiries go to Andra, and DRY_RUN "1" means no email is sent at all.
+  // Before going live: NOTIFY_TO -> rcr.plastering@gmx.com and DRY_RUN -> "0".
+  "vars": {
+    "NOTIFY_TO": "andradudan4@gmail.com",
+    "RESEND_FROM": "R. Reeds Website <leads@frontdesk.org.uk>",
+    "DRY_RUN": "1"
+  },
+  "ratelimits": [
+    { "name": "CHAT_LIMIT", "namespace_id": "2201", "simple": { "limit": 30, "period": 60 } },
+    { "name": "LEAD_LIMIT", "namespace_id": "2203", "simple": { "limit": 5, "period": 60 } }
+  ],
+  "observability": { "enabled": true }
+}
