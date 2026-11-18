@@ -8,9 +8,9 @@
     "run_worker_first": ["/api/*"],
     "html_handling": "drop-trailing-slash"
   },
-  // TEST STEP: client key + sender, enquiries to Andra. Live: NOTIFY_TO rcr.plastering@gmx.com.
+  // LIVE: enquiries go to Rob, sent with the Reeds Resend key.
   "vars": {
-    "NOTIFY_TO": "andradudan4@gmail.com",
+    "NOTIFY_TO": "rcr.plastering@gmx.com",
     "RESEND_FROM": "R. Reeds Plastering & Decorating <leads@reedsplasteranddecor.co.uk>",
     "DRY_RUN": "0"
   },
