@@ -1,6 +1,10 @@
 {
   "name": "reeds-site",
   "main": "worker/index.js",
+  "routes": [
+    { "pattern": "reedsplasteranddecor.co.uk", "custom_domain": true },
+    { "pattern": "www.reedsplasteranddecor.co.uk", "custom_domain": true }
+  ],
   "compatibility_date": "2026-01-01",
   "assets": {
     "directory": "./public",
