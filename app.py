@@ -531,7 +531,6 @@ final wrap-up message, on its own line.
 BASE_STYLE = """
 <meta name="google-site-verification" content="eVQdG_IURAAD4ym4dbTEZMj7PynMYeEs7eJgbAeihOU" />
 <link rel="icon" type="image/jpeg" href="/static/images/logo.jpg">
-<link rel="canonical" href="https://reedsplasteranddecor.co.uk/">
 <meta name="theme-color" content="#050506">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
@@ -736,6 +735,7 @@ FOOTER = """
   <div style="color:#fff;font-weight:800;letter-spacing:.14em">R.REEDS PLASTERING &amp; DECORATING</div>
   <div style="margin-top:6px">Chichester, PO19 &middot; covering Bognor Regis, Emsworth, Selsey, Arundel &amp; West Sussex</div>
   <div style="margin-top:12px"><a href="tel:+447880256562">07880 256562</a> &nbsp;|&nbsp; <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a> &nbsp;|&nbsp; <a href="/privacy-policy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms">Terms &amp; Conditions</a></div>
+  <div style="margin-top:8px"><a href="/plastering-chichester">Plastering in Chichester</a> &nbsp;|&nbsp; <a href="/painting-decorating-chichester">Painting &amp; decorating</a> &nbsp;|&nbsp; <a href="/areas">Areas we cover</a></div>
 </footer>
 <a class="wa-float" href="https://wa.me/447880256562" target="_blank" rel="noopener" aria-label="WhatsApp R. Reeds">""" + WA_SVG + """</a>
 <div class="lb" id="lb" onclick="this.classList.remove('open')"><span class="x">&times;</span><img id="lbimg" src="" alt=""></div>
@@ -823,7 +823,7 @@ def _shots(items):
     return "".join('<figure class="shot"><img src="/static/images/' + fn + '" alt="' + cap + '" loading="lazy"><figcaption>' + cap + '</figcaption></figure>' for fn, cap in items)
 
 HOME_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>R. Reeds Plastering &amp; Decorating - Chichester</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>R. Reeds Plastering &amp; Decorating - Chichester</title><link rel="canonical" href="https://reedsplasteranddecor.co.uk/">
 <meta name="description" content="Professional plastering, painting and decorating in Chichester and West Sussex. Free quotes, photo uploads and quick replies.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 """ + BASE_STYLE + """</head><body>""" + NAV + """
@@ -924,7 +924,7 @@ HOME_PAGE = """
 """ + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 GALLERY_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Gallery - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Gallery - R. Reeds</title><meta name="description" content="Photos of real plastering, painting and decorating jobs by R. Reeds across Chichester and West Sussex."><link rel="canonical" href="https://reedsplasteranddecor.co.uk/gallery"><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
 <section class="band"><div class="wrap">
   <div class="head reveal"><div class="eyebrow">Plastering &amp; skimming</div><div class="rule"></div><h2>Plastering work.</h2><p class="sub">Tap any photo to view it full size.</p></div>
   <div class="gallery reveal">""" + _shots([
@@ -944,7 +944,7 @@ GALLERY_PAGE = """
 </div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 SERVICES_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Services - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Services - R. Reeds</title><meta name="description" content="Plastering, skimming, painting and decorating for homes and businesses across Chichester and West Sussex. Free written quotes."><link rel="canonical" href="https://reedsplasteranddecor.co.uk/services"><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
 <section class="band"><div class="wrap"><div class="head reveal"><div class="eyebrow">Services</div><div class="rule"></div><h2>Plastering, painting &amp; decorating.</h2><p class="sub">Domestic and commercial work across Chichester, Bognor Regis, Emsworth, Selsey, Arundel and nearby West Sussex.</p></div><div class="cards">
 <div class="card reveal"><div class="num">01</div><h3>Plastering</h3><p>Skimming, ceilings, patch repairs, chimney breasts, re-skims over artex and damaged walls.</p></div>
 <div class="card reveal"><div class="num">02</div><h3>Painting</h3><p>Walls, ceilings, woodwork, feature walls and full room refreshes.</p></div>
@@ -953,7 +953,7 @@ SERVICES_PAGE = """
 </div></div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 CONTACT_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Contact - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Contact - R. Reeds</title><meta name="description" content="Get a free plastering or decorating quote in Chichester: call or WhatsApp 07880 256562, or send photos through the chat."><link rel="canonical" href="https://reedsplasteranddecor.co.uk/contact"><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
 <section class="band"><div class="wrap narrow"><div class="head reveal"><div class="eyebrow">Contact</div><div class="rule"></div><h2>Send a job enquiry.</h2><p class="sub">Use the chat bubble for the fastest quote, or get in touch directly.</p></div><div class="contact-box reveal">
 <p><strong style="color:#fff">Phone:</strong> <a href="tel:+447880256562">07880 256562</a></p>
 <p><strong style="color:#fff">Email:</strong> <a href="mailto:rcr.plastering@gmx.com">rcr.plastering@gmx.com</a></p>
@@ -962,7 +962,7 @@ CONTACT_PAGE = """
 </div></div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 PRIVACY_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Privacy Policy - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Privacy Policy - R. Reeds</title><link rel="canonical" href="https://reedsplasteranddecor.co.uk/privacy-policy"><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
 <section class="band"><div class="wrap narrow">
   <div class="head reveal"><div class="eyebrow">Legal</div><div class="rule"></div><h2>Privacy Policy</h2><p class="sub">How R. Reeds Plastering &amp; Decorating handles the information you share through this website.</p></div>
   <div class="prose reveal">
@@ -983,7 +983,7 @@ PRIVACY_PAGE = """
 </div></section>""" + FOOTER + SCRIPTS + WIDGET_INCLUDE + "</body></html>"
 
 TERMS_PAGE = """
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Terms &amp; Conditions - R. Reeds</title><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Terms &amp; Conditions - R. Reeds</title><link rel="canonical" href="https://reedsplasteranddecor.co.uk/terms"><meta name="viewport" content="width=device-width, initial-scale=1">""" + BASE_STYLE + """</head><body>""" + NAV + """
 <section class="band"><div class="wrap narrow">
   <div class="head reveal"><div class="eyebrow">Legal</div><div class="rule"></div><h2>Terms &amp; Conditions</h2><p class="sub">The terms that apply when you get a quote or book work with R. Reeds Plastering &amp; Decorating.</p></div>
   <div class="prose reveal">
@@ -1050,7 +1050,7 @@ def ensure_session():
 
 @app.route("/sitemap.xml")
 def sitemap():
-    pages = ["/", "/services", "/gallery", "/contact", "/privacy-policy", "/terms"]
+    pages = ["/", "/services", "/plastering-chichester", "/painting-decorating-chichester", "/areas", "/gallery", "/contact", "/privacy-policy", "/terms"]
     base = "https://reedsplasteranddecor.co.uk"
     urls = "".join(f"<url><loc>{base}{p}</loc></url>" for p in pages)
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
@@ -1091,6 +1091,21 @@ def privacy():
 def terms():
     ensure_session()
     return render_template_string(TERMS_PAGE)
+
+import seo_pages
+
+
+def _seo_page(path):
+    def view():
+        ensure_session()
+        return render_template_string(seo_pages.render(path, BASE_STYLE, NAV, FOOTER, SCRIPTS, WIDGET_INCLUDE))
+    view.__name__ = "seo" + path.replace("/", "_").replace("-", "_")
+    app.add_url_rule(path, view.__name__, view)
+
+
+for _p in seo_pages.PAGES:
+    _seo_page(_p)
+
 
 @app.route("/widget.js")
 def widget_js():

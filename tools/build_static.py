@@ -24,6 +24,9 @@ PAGES = {
     "/privacy-policy": "privacy-policy.html",
     "/terms": "terms.html",
     "/widget-frame": "widget-frame.html",
+    "/plastering-chichester": "plastering-chichester.html",
+    "/painting-decorating-chichester": "painting-decorating-chichester.html",
+    "/areas": "areas.html",
 }
 
 
