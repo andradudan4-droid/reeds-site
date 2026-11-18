@@ -8,11 +8,10 @@
     "run_worker_first": ["/api/*"],
     "html_handling": "drop-trailing-slash"
   },
-  // TESTING: enquiries go to Andra, and DRY_RUN "1" means no email is sent at all.
-  // Before going live: NOTIFY_TO -> rcr.plastering@gmx.com and DRY_RUN -> "0".
+  // LIVE: enquiries go to Rob. Needs the Reeds Resend key (reedsplasteranddecor.co.uk is verified there).
   "vars": {
-    "NOTIFY_TO": "andradudan4@gmail.com",
-    "RESEND_FROM": "R. Reeds Website <leads@frontdesk.org.uk>",
+    "NOTIFY_TO": "rcr.plastering@gmx.com",
+    "RESEND_FROM": "R. Reeds Plastering & Decorating <leads@reedsplasteranddecor.co.uk>",
     "DRY_RUN": "0"
   },
   "ratelimits": [
