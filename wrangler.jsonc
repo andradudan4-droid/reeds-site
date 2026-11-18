@@ -9,7 +9,7 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/*"],
+    "run_worker_first": ["/*", "!/static/*"],
     "html_handling": "drop-trailing-slash"
   },
   // LIVE: enquiries go to Rob, sent with the Reeds Resend key.

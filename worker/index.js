@@ -323,6 +323,11 @@ async function lead(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+      // One address only: send www.<domain> to <domain>, as the Render version did.
+      if (url.hostname.startsWith("www.")) {
+        url.hostname = url.hostname.slice(4);
+        return Response.redirect(url.toString(), 301);
+      }
     if (url.pathname.startsWith("/api/")) {
       if (request.method !== "POST") return json({ error: "method" }, 405);
       const origin = request.headers.get("origin");
