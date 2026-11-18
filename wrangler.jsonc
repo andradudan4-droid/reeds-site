@@ -13,7 +13,7 @@
   "vars": {
     "NOTIFY_TO": "andradudan4@gmail.com",
     "RESEND_FROM": "R. Reeds Website <leads@frontdesk.org.uk>",
-    "DRY_RUN": "1"
+    "DRY_RUN": "0"
   },
   "ratelimits": [
     { "name": "CHAT_LIMIT", "namespace_id": "2201", "simple": { "limit": 30, "period": 60 } },
